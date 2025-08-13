@@ -22,7 +22,7 @@ The project focuses on clean, modular, and maintainable code, with error handlin
 1. Clone the repository:
 
    ```
-   git clone <repo-url>
+   git clone https://github.com/Baghlani/panto-d3.git
    cd panto-d3
    ```
 
@@ -70,11 +70,6 @@ Tests are configured with Vitest and MSW for mocking API requests.
 
   ```
   npm run test:ui
-  ```
-
-- Generate coverage report:
-  ```
-  npm run coverage
   ```
 
 Tests cover:
