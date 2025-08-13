@@ -35,9 +35,7 @@ const Chart = ({ title, data }: ChartDefinition) => {
     const svg = d3
       .select(svgRef.current)
       .attr("width", width)
-      .attr("height", height)
-      .style("background", "var(--background-secondary-color)")
-      .style("overflow", "visible");
+      .attr("height", height);
 
     svg.selectAll("*").remove(); // Clear previous
 
@@ -109,7 +107,7 @@ const Chart = ({ title, data }: ChartDefinition) => {
         <p className="error">{error}</p>
       ) : (
         <>
-          <svg ref={svgRef}></svg>
+          <svg ref={svgRef} className="chart-svg"></svg>
           {Array.isArray(data[0][1]) && (
             <div className="multi-series-legend">
               {Array.from({ length: (data[0][1] as number[]).length }).map((_, i) => (

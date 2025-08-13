@@ -9,6 +9,11 @@
   color: var(--destructive-color);
 }
 
+.chart-svg {
+  background: var(--background-secondary-color);
+  overflow: visible;
+}
+
 .multi-series-legend {
   margin-top: 12px;
 }
