@@ -32,10 +32,7 @@ const Chart = ({ title, data }: ChartDefinition) => {
     const height = 300;
     const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-    const svg = d3
-      .select(svgRef.current)
-      .attr("width", width)
-      .attr("height", height);
+    const svg = d3.select(svgRef.current).attr("width", width).attr("height", height);
 
     svg.selectAll("*").remove(); // Clear previous
 
@@ -86,7 +83,8 @@ const Chart = ({ title, data }: ChartDefinition) => {
           .attr("fill", "none")
           .attr("stroke", getColor(i))
           .attr("stroke-width", 1.5)
-          .attr("d", line);
+          .attr("d", line)
+          .attr("aria-label", `Line chart for series ${i + 1}`);
       }
     } else {
       const singleData = data.map(d => [d[0], (d[1] as number) ?? null] as [number, number | null]);
@@ -96,7 +94,8 @@ const Chart = ({ title, data }: ChartDefinition) => {
         .attr("fill", "none")
         .attr("stroke", "blue")
         .attr("stroke-width", 1.5)
-        .attr("d", line);
+        .attr("d", line)
+        .attr("aria-label", "Line Chart");
     }
   }, [data]);
 
@@ -107,8 +106,8 @@ const Chart = ({ title, data }: ChartDefinition) => {
         <p className="error">{error}</p>
       ) : (
         <>
-          <svg ref={svgRef} className="chart-svg"></svg>
-          {Array.isArray(data[0][1]) && (
+          <svg ref={svgRef} role="presentation"></svg>
+          {data.length > 0 && Array.isArray(data[0][1]) && (
             <div className="multi-series-legend">
               {Array.from({ length: (data[0][1] as number[]).length }).map((_, i) => (
                 <span key={i} className="multi-series-legend-item">
