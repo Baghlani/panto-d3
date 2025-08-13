@@ -20,8 +20,9 @@ function App() {
         // Minimal validation and normalization
         const normalized: ChartDefinition[] = raw.map((chart, index) => {
           if (!chart || typeof chart !== "object") throw new Error(`Invalid chart at index ${index}`);
+          if (!Array.isArray(chart.data)) throw new Error(`Invalid data at chart with index ${index}`);
+
           const title = typeof chart.title === "string" ? chart.title : `Chart ${index + 1}`;
-          if (!Array.isArray(chart.data)) throw new Error(`Invalid data at index ${index}`);
           const data = chart.data as ChartDefinition["data"];
           return { title, data };
         });
@@ -42,8 +43,7 @@ function App() {
   }, []);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "crimson" }}>Error: {error}</p>;
-
+  if (error) return <p className="error">Error: {error}</p>;
   console.log(charts);
 
   return <div></div>;

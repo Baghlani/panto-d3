@@ -4,8 +4,14 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --text-color: #dcdcdc;
+  --text-secondary-color: #bcbcbc;
+  --background-color: #242424;
+  --background-secondary-color: #333333;
+  --destructive-color: crimson;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,7 +29,11 @@ body {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --text-color: #213547;
+    --text-secondary-color: #424242;
+    --background-color: #ffffff;
+    --background-secondary-color: #f5f5f5;
+    background-color: var(--background-color);
+    color: var(--text-color);
   }
 }
