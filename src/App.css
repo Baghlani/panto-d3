@@ -8,3 +8,18 @@
 .error {
   color: var(--destructive-color);
 }
+
+.multi-series-legend {
+  margin-top: 12px;
+}
+
+.multi-series-legend-item {
+  margin-right: 12px;
+}
+
+.multi-series-legend-item-dot {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 4px;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Chart from "./components/Chart";
 import type { ChartDefinition } from "./types";
 
 function App() {
@@ -44,9 +45,14 @@ function App() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p className="error">Error: {error}</p>;
-  console.log(charts);
 
-  return <div></div>;
+  return (
+    <div>
+      {charts.map(chart => (
+        <Chart key={chart.title} title={chart.title} data={chart.data} />
+      ))}
+    </div>
+  );
 }
 
 export default App;
